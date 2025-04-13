@@ -1,0 +1,29 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.associations": {
+        "*.json": "jsonc"
+    },
+    // Add .NET project to workspace
+    "dotnetAcquisitionExtension.existingDotnetPath": "C:\\Program Files\\dotnet\\dotnet.exe",
+    "omnisharp.useModernNet": true,
+    "omnisharp.path": "latest",
+    "dotnet.defaultSolution": "D:/DOCUMENT/.NET/WEB/YourSolution.sln"
+} 
