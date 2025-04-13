@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from './base.service';
 import { IProductDetail } from '../share/Models/ProductDetail';
-import { createHttpHeaders, createHttpParams, getAbsoluteImagePath } from '../Utility/utils'; // Thêm getAbsoluteImagePath
+import { createHttpHeaders, createHttpParams } from '../Utility/utils';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +25,14 @@ export class ProductDetailService {
       headers
     ).pipe(
       map(response => {
+        if (!response || !response.Data) return [];
+        
         // Chuyển đổi đường dẫn ảnh từ tương đối sang tuyệt đối cho mỗi sản phẩm
-        const productDetails = response.Data.map(product => ({
+        return response.Data.map(product => ({
           ...product,
-          AvatarImage: getAbsoluteImagePath(product.AvatarImage || '')
+          // Thêm domain vào đường dẫn ảnh nếu có
+          AvatarImage: product.AvatarImage ? `${environment.apiUrl}/${product.AvatarImage}` : ''
         }));
-        return productDetails;
       })
     );
   }
