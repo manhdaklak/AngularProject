@@ -13,13 +13,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of productCategories">
+    <tr *ngFor="let product of productDetails">
       <td>{{ product.Id }}</td>
-      <td>{{ product.Code }}</td>
       <td>{{ product.Name }}</td>
-      <td>{{ product.Description }}</td>
+      <td>{{ product.Price }}</td>
       <td>{{ product.Status }}</td>
       <td>{{ product.TotalRow }}</td>
+      <td><img [src]="product.AvatarImage" alt="Product Image" style="max-width: 100px;"></td>
     </tr>
   </tbody>
   <tbody>

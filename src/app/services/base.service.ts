@@ -6,17 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BaseService {
-  private apiBaseUrl = 'http://localhost:5055/api'; // URL chung cho API
+  private apiBaseUrl = 'http://localhost:5055/api';
 
   constructor(private http: HttpClient) {}
 
-  // 🟢 GET request
   get<T>(endpoint: string, params?: HttpParams): Observable<T> {
     return this.http.get<T>(`${this.apiBaseUrl}/${endpoint}`, { params });
   }
 
-  // 🟢 POST request
   post<T>(endpoint: string, body: any, headers?: HttpHeaders): Observable<T> {
     return this.http.post<T>(`${this.apiBaseUrl}/${endpoint}`, body, { headers });
+  }
+
+  put<T>(endpoint: string, body: any, headers?: HttpHeaders): Observable<T> {
+    return this.http.put<T>(`${this.apiBaseUrl}/${endpoint}`, body, { headers });
+  }
+
+  delete<T>(endpoint: string, headers?: HttpHeaders): Observable<T> {
+    return this.http.delete<T>(`${this.apiBaseUrl}/${endpoint}`, { headers });
   }
 }
